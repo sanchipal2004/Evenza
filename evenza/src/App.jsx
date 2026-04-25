@@ -9,6 +9,7 @@ import Signup from './assets/pages/Signup'
 import OrganizationDashboard from './assets/pages/OrganizationDashboard';
 import CreateEvent from './assets/pages/CreateEvent'
 import Events from './assets/pages/Eventlist'
+import Resources from './assets/pages/Resources'
 
 
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/OrganizationDashboard" element={<OrganizationDashboard/>}/>
         <Route path="/createEvent" element={<CreateEvent/>}/>
         <Route path="/Events" element={<Events/>}/>
+        <Route path="/Resources" element={<Resources/>}/>
 
         
       </Routes>

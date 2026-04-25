@@ -22,6 +22,7 @@ const Navbar = () => {
           <a href="/OrganizationDashboard">For Organizers</a>
           <a href="#">For Students</a>
           <a href="/">Home</a>
+          <a href="/resources">Resources</a>
         </div>
 
 
