@@ -62,7 +62,7 @@ const Navbar = () => {
           className="flex items-center gap-2 cursor-pointer group" 
           onClick={() => navigate('/')}
         >
-          <div className="w-9 h-9 bg-gradient-to-br from-purple-400 to-purple-700 rounded-xl rotate-3 group-hover:rotate-12 transition-transform duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)]"></div>
+          <div className="w-9 h-7 bg-gradient-to-br from-purple-400 to-purple-700 rounded-xl rotate-3 group-hover:rotate-12 transition-transform duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] text-center font-sans text-xl font-bold">E</div>
           <h1 className="text-2xl font-black bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent tracking-tighter">
             EVENZA
           </h1>

@@ -32,7 +32,7 @@ export default function Resources() {
     <div className="min-h-screen bg-gray-50 font-sans">
       <Navbar />
 
-      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-700 to-gray-700 text-white py-16 px-6 text-center">
+      <div className="relative overflow-hidden bg-gradient-to-br from-purple-900 via-purple-700 to-gray-700 text-white py-20 px-6 text-center">
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
         <h1 className="relative text-4xl font-extrabold mb-3 tracking-tight">

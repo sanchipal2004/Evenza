@@ -310,9 +310,9 @@ const Hero = () => {
         <div
           style={{
             position: "relative",
-            borderRadius: 25,
+            borderRadius: 0,
             overflow: "hidden",
-            padding: "80px 40px 70px",
+            padding: "100px 40px 70px",
             textAlign: "center",
             background: "linear-gradient(135deg, #0d0618 0%, #130a2a 40%, #0a0f2a 70%, #0d0618 100%)",
             boxShadow: "0 40px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.07)",
@@ -526,77 +526,7 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div
-            className="hero-stats"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 12,
-              marginTop: 56,
-              flexWrap: "wrap",
-              position: "relative",
-            }}
-          >
-            {[
-              { value: "200+", label: "Events This Semester", delay: "0.85s" },
-              { value: "50+", label: "Active Clubs", delay: "0.95s" },
-              { value: "5K+", label: "Students Engaged", delay: "1.05s" },
-            ].map((stat, i) => (
-              <div
-                key={i}
-                className="stat-card"
-                style={{
-                  animationDelay: stat.delay,
-                  padding: "16px 28px",
-                  borderRadius: 16,
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(139,92,246,0.2)",
-                  backdropFilter: "blur(12px)",
-                  minWidth: 130,
-                }}
-              >
-                {/* <div style={{
-                  fontFamily: "'Syne', sans-serif",
-                  fontSize: 26,
-                  fontWeight: 800,
-                  background: "linear-gradient(135deg, #c4b5fd, #818cf8)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}> */}
-                <div style={{
-  fontFamily: "'Syne', sans-serif",
-  fontSize: 28,
-  fontWeight: 900,
-  background: "linear-gradient(135deg, #ffffff, #a78bfa, #60a5fa)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  textShadow: "0 0 12px rgba(168,85,247,0.35)",
-}}>
-                  {stat.value}
-                </div>
-                 {/* <div style={{ color: "rgba(196,181,253,0.55)", fontSize: 12, marginTop: 2, fontWeight: 400 }}> */}
-                 <div style={{
-  color: "rgba(255,255,255,0.75)",
-  fontSize: 12,
-  marginTop: 6,
-  fontWeight: 500,
-  letterSpacing: "0.03em",
-}}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
           </div>
-
-          {/* Bottom glow */}
-          <div style={{
-            position: "absolute", bottom: -1, left: "50%", transform: "translateX(-50%)",
-            width: 400, height: 2,
-            background: "linear-gradient(90deg, transparent, rgba(99,102,241,0.5), transparent)",
-          }} />
-        </div>
       </section>
     </>
   );
