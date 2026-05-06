@@ -41,8 +41,9 @@ console.log("BODY:", req.body);
 // GET ALL EVENTS
 export const getEvents = asynchandler(async (req, res) => {
 
-    const events = await Event.find()
-        .populate("club", "fullName email role")
+    const events = await Event.find({
+        club:req.user._id
+        })
         .sort({ date: 1 })
 
     res.status(200).json(
@@ -62,7 +63,7 @@ export const updateEvent = asynchandler(async (req, res) => {
     }
 
     // Only event creator club can edit
-    if (event.club.toString() !== req.user.id) {
+    if (event.club.toString() !== req.user._id.toString()) {
         throw new ApiError(403, "Not authorized")
     }
 
@@ -83,9 +84,10 @@ export const updateEvent = asynchandler(async (req, res) => {
 export const pastEvents = asynchandler(async (req, res) => {
 
     const events = await Event.find({
+        club:req.user._id,
         date: { $lt: new Date() }
     })
-        .populate("club", "name")
+        
         .sort({ date: -1 })
 
     res.status(200).json(
@@ -112,17 +114,22 @@ export const getSingleEvent = asynchandler(async (req, res) => {
 // GET DASHBOARD STATS
 export const getEventStats = asynchandler(async (req, res) => {
 
-    const totalEvents = await Event.countDocuments()
+    const totalEvents = await Event.countDocuments({
+        club: req.user._id
+    })
 
     const upcomingEvents = await Event.countDocuments({
+         club: req.user._id,
         date: { $gte: new Date() }
     })
 
     const pastEvents = await Event.countDocuments({
+         club: req.user._id,
         date: { $lt: new Date() }
     })
 
     const registrations = await Event.aggregate([
+         { $match: { organizer: req.user._id } },
         {
             $group: {
                 _id: null,
@@ -151,7 +158,7 @@ export const deleteEvent = asynchandler(async (req, res) => {
         throw new ApiError(404, "Event not found")
     }
 
-    if (event.club.toString() !== req.user.id) {
+    if (event.club.toString() !== req.user._id.toString()) {
         throw new ApiError(403, "Not authorized")
     }
 
@@ -168,6 +175,7 @@ export const upcomingEvents = async (req,res)=>{
   try{
 
     const events = await Event.find({
+        club:req.user._id,
       date: { $gt: new Date() }
     }).sort({ date: 1 })
 

@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import api from "../../api.js";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 export default function CreateEvent() {
-    const navigate= useNavigate();
-
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         date: "",
         time: "",
         location: "",
-        googleFormLink:""
+        googleFormLink: ""
     })
     const [banner, setBanner] = useState(null);
     const [preview, setPreview] = useState(null);
+
+    
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const res = await api.get("/auth/me");
+                if (res.data.data) {
+                    setUser(res.data.data);
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        fetchUser();
+    }, []);
 
     const handleChange = (e) => {
         setFormData({
@@ -57,11 +75,13 @@ export default function CreateEvent() {
 
                 <div className="p-8 text-xl font-bold text-purple-600">
                     ClubHub
-                    <p className="text-sm text-gray-400">Admin Portal</p>
+                    <p className="text-sm text-gray-400">
+                        {user?.fullName || "Club Organizer"}
+                    </p>
                 </div>
-                <nav className="flex flex-col gap-1 px-8"> <button className="text-left px-4 py-2 rounded hover:bg-gray-100" onClick={()=>navigate("/OrganizationDashboard")}> Dashboard </button> <button className="text-left px-4 py-2 rounded bg-purple-100 text-purple-600" onClick={()=>navigate("/CreateEvent")}> Create Events </button> 
-                <button className="text-left px-4 py-2 rounded bg-purple-100 text-purple-600" onClick={()=>navigate("/Events")}>  Events </button>  </nav>
-            
+                <nav className="flex flex-col gap-1 px-8"> <button className="text-left px-4 py-2 rounded hover:bg-gray-100" onClick={() => navigate("/OrganizationDashboard")}> Dashboard </button> <button className="text-left px-4 py-2 rounded bg-purple-100 text-purple-600" onClick={() => navigate("/CreateEvent")}> Create Events </button>
+                    <button className="text-left px-4 py-2 rounded bg-purple-100 text-purple-600" onClick={() => navigate("/Events")}>  Events </button>  </nav>
+
             </div>
 
             {/* Main */}
@@ -219,7 +239,7 @@ export default function CreateEvent() {
 
                         <button
                             type="submit"
-                            className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700"onClick={()=>{navigate("/")}}
+                            className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700" onClick={() => { navigate("/") }}
                         >
                             Publish Event
                         </button>

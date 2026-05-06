@@ -49,9 +49,10 @@ const eventSchema = new mongoose.Schema({
     },
 
   club: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
-  }
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+  required: true
+}
 
 }, { timestamps: true });
 
