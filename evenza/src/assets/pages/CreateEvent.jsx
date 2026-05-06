@@ -234,7 +234,7 @@
 // }
 
 
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import api from "../../api.js";
 import { useNavigate } from "react-router-dom";
 
@@ -252,7 +252,22 @@ export default function CreateEvent() {
   });
   const [banner, setBanner] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [user, setUser] = useState(null);
 
+  useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const res = await api.get("/auth/me");
+                if (res.data.data) {
+                    setUser(res.data.data);
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        fetchUser();
+    }, []);
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -304,7 +319,7 @@ export default function CreateEvent() {
             </div>
             <div>
               <h1 className="font-black text-2xl tracking-tighter">Evenza</h1>
-              <p className="text-[10px] font-black text-purple-500 tracking-[0.3em] uppercase">Manager</p>
+              <p className="text-[10px] font-black text-purple-500 tracking-[0.3em] uppercase"> {user?.fullName|| "Club Organizer"}</p>
             </div>
           </div>
         </div>

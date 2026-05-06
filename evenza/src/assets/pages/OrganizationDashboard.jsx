@@ -315,7 +315,7 @@ export default function Dashboard() {
             </div>
             <div>
               <h1 className="font-black text-2xl tracking-tighter">Evenza</h1>
-              <p className="text-[10px] font-black text-purple-500 tracking-[0.3em] uppercase">Control</p>
+              <p className="text-[10px] font-black text-purple-500 tracking-[0.3em] uppercase">Organizer</p>
             </div>
           </div>
         </div>
@@ -337,15 +337,7 @@ export default function Dashboard() {
 
         {/* User Profile Info */}
         <div className="mt-auto p-6">
-          <div className="flex items-center gap-4 p-4 rounded-3xl bg-white/[0.03] border border-white/5">
-            <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center font-bold text-xs">
-              {user?.fullName?.charAt(0) || "O"}
-            </div>
-            <div className="overflow-hidden">
-              <p className="text-sm font-black truncate">{user?.fullName}</p>
-              <p className="text-[10px] font-bold text-purple-400/60 uppercase tracking-widest">Club Lead</p>
-            </div>
-          </div>
+          
         </div>
       </aside>
 

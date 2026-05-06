@@ -71,8 +71,8 @@ const Navbar = () => {
         {/* Catchy Navigation Links */}
         <div className="hidden md:flex items-center gap-10">
           {[
-            { name: "Organizers", path: "/OrganizationDashboard" },
-            { name: "Students", path: "#" },
+            
+            
             { name: "Home", path: "/" },
             { name: "Resources", path: "/resources" }
           ].map((link) => (

@@ -203,14 +203,29 @@ const Hero = () => {
   const token = localStorage.getItem("token");
 
   const handleFindEvents = () => {
-    if (token && role === "student") navigate("/Events");
-    else { alert("Please login as a user to view events"); navigate("/login"); }
-  };
+  if (!token) {
+    alert("Please login first");
+    return navigate("/login");
+  }
 
+ 
+  if (role === "student") {
+    navigate("/Events");
+  } else {
+    alert("Only student can access Events");
+  }
+};
   const handleCreateEvent = () => {
-    if (token && role === "club") navigate("/CreateEvent");
-    else { alert("Only clubs can create events"); navigate("/login"); }
-  };
+    if (!token) {
+      alert("please login first")
+    }
+    if(role=== "club"){
+      navigate("/CreateEvent")
+    }
+    else{
+      alert("Only Club can access Create")
+    }
+  }
 
   return (
     <>
