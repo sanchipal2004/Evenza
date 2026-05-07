@@ -151,14 +151,7 @@ export default function Events() {
             className="flex-1 backdrop-blur-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 px-4 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
           />
 
-          {["All Events", "Technical", "Cultural", "Sports"].map((item, i) => (
-            <button
-              key={i}
-              className="px-4 py-2 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 hover:bg-purple-600 hover:shadow-[0_0_15px_rgba(168,85,247,0.7)] transition-all duration-300"
-            >
-              {item}
-            </button>
-          ))}
+         
         </div>
 
         {/* Events Grid */}
